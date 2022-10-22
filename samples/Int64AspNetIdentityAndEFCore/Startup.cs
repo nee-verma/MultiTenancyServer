@@ -24,11 +24,12 @@ namespace MultiTenancyServer.Samples.AspNetIdentityAndEFCore
         {
             services.AddDbContext<ApplicationDbContext>(options =>
                 options
-                    //.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"))
-                    .UseSqlite(Configuration.GetConnectionString("DefaultConnection"))
+                    .UseSqlServer(Configuration.GetConnectionString("DefaultConnection"))
+                    //.UseSqlite(Configuration.GetConnectionString("DefaultConnection"))
                     .EnableSensitiveDataLogging());
             services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
+
             // Add Multi-Tenancy services.
             services.AddMultiTenancy<ApplicationTenant, long>()
                 // To test a domain parser locally, add a similar line 
@@ -38,6 +39,10 @@ namespace MultiTenancyServer.Samples.AspNetIdentityAndEFCore
                 // 127.0.0.1	tenant2.tenants.local
                 .AddSubdomainParser(".tenants.local")
                 .AddEntityFrameworkStore<ApplicationDbContext, ApplicationTenant, long>();
+
+            //NK
+            services.AddDatabaseDeveloperPageExceptionFilter();
+
             services.AddControllersWithViews();
             services.AddRazorPages();
         }
@@ -48,7 +53,7 @@ namespace MultiTenancyServer.Samples.AspNetIdentityAndEFCore
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                app.UseDatabaseErrorPage();
+                //app.UseDatabaseErrorPage();                
             }
             else
             {

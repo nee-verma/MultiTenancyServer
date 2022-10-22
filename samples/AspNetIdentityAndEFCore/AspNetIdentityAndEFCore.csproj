@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
 
     <PropertyGroup>
-        <TargetFramework>netcoreapp3.1</TargetFramework>
+        <TargetFramework>net6.0</TargetFramework>
         <UserSecretsId>aspnet-MultiTenancyServer.Samples.AspNetIdentityAndEFCore-1B700307-89DB-47F5-B798-133F6223895F</UserSecretsId>
     </PropertyGroup>
 

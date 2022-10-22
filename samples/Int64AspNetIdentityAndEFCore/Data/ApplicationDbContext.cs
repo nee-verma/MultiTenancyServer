@@ -61,10 +61,10 @@ namespace MultiTenancyServer.Samples.AspNetIdentityAndEFCore.Data
                 // Add multi-tenancy support to entity.
                 b.HasTenancy(() => _tenancyContext.Tenant.Id, _tenancyModelState, hasIndex: false);
                 // Remove unique index on NormalizedUserName.
-                b.HasIndex(u => u.NormalizedUserName).HasName("UserNameIndex").IsUnique(false);
+                b.HasIndex(u => u.NormalizedUserName).HasDatabaseName("UserNameIndex").IsUnique(false);
                 // Add unique index on TenantId and NormalizedUserName.
                 b.HasIndex(tenantReferenceOptions.ReferenceName, nameof(ApplicationUser.NormalizedUserName))
-                    .HasName("TenantUserNameIndex").IsUnique();
+                    .HasDatabaseName("TenantUserNameIndex").IsUnique();
             });
 
             // Configure properties on Role (ASP.NET Core Identity).
@@ -73,10 +73,10 @@ namespace MultiTenancyServer.Samples.AspNetIdentityAndEFCore.Data
                 // Add multi-tenancy support to entity.
                 b.HasTenancy(() => _tenancyContext.Tenant.Id, _tenancyModelState, hasIndex: false);
                 // Remove unique index on NormalizedUserName.
-                b.HasIndex(r => r.NormalizedName).HasName("RoleNameIndex").IsUnique(false);
+                b.HasIndex(r => r.NormalizedName).HasDatabaseName("RoleNameIndex").IsUnique(false);
                 // Add unique index on TenantId and NormalizedUserName.
                 b.HasIndex(tenantReferenceOptions.ReferenceName, nameof(IdentityRole.NormalizedName))
-                    .HasName("TenantRoleNameIndex").IsUnique();
+                    .HasDatabaseName("TenantRoleNameIndex").IsUnique();
             });
         }
 
