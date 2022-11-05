@@ -44,7 +44,7 @@ namespace MultiTenancyServer.EntityFramework
                 b.Property(t => t.ConcurrencyStamp).IsConcurrencyToken();
                 b.Property(t => t.CanonicalName).HasMaxLength(256);
                 b.Property(t => t.NormalizedCanonicalName).HasMaxLength(256);
-                b.HasIndex(t => t.NormalizedCanonicalName).HasName($"{nameof(TenancyTenant.CanonicalName)}Index").IsUnique();
+                b.HasIndex(t => t.NormalizedCanonicalName).HasDatabaseName($"{nameof(TenancyTenant.CanonicalName)}Index").IsUnique();
 
                 if (storeOptions?.Schema != null)
                 {

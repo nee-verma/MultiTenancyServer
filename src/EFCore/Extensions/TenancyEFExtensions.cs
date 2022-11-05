@@ -125,7 +125,7 @@ namespace Microsoft.EntityFrameworkCore
                 var index = builder.HasIndex(propertyName);
                 if (!string.IsNullOrEmpty(indexNameFormat))
                 {
-                    index.HasName(string.Format(indexNameFormat, propertyName));
+                    index.HasDatabaseName(string.Format(indexNameFormat, propertyName));
                 }
             }
 

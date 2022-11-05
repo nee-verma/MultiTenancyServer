@@ -1,0 +1,45 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+        <RootNamespace>MultiTenancyServer.Samples.AspNetIdentityAndEFCore</RootNamespace>
+        <AssemblyName>MultiTenancyServer.Samples.AspNetIdentityAndEFCore</AssemblyName>
+        <Version>0.9.0</Version>
+        <Description>MultiTenancyServer with ASP.NET Core Identity and Entity Framework Core sample project.</Description>
+        <PackageTags>multitenancy multi-tenancy multitenant multi-tenant tenants tenant company client customer division partition core common sample aspnet-identity aspnet identity ef efcore ef-core</PackageTags>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <None Remove="Mgmt.db" />
+      <None Remove="Mgmt.db-shm" />
+      <None Remove="Mgmt.db-wal" />
+      <None Remove="tenant1.db" />
+      <None Remove="tenant1.db-shm" />
+      <None Remove="tenant1.db-wal" />
+      <None Remove="tenant2.db" />
+      <None Remove="tenant2.db-shm" />
+      <None Remove="tenant2.db-wal" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="6.0.10" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="6.0.10" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.10">
+          <PrivateAssets>all</PrivateAssets>
+          <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+        </PackageReference>
+        <PackageReference Include="Serilog.AspNetCore" Version="6.0.1" />
+        <PackageReference Include="Serilog.Sinks.Console" Version="4.1.0" />
+        <PackageReference Include="Serilog.Sinks.File" Version="5.0.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\src\AspNetCore\AspNetCore.csproj" />
+      <ProjectReference Include="..\..\src\EFCore\EFCore.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Update="Microsoft.SourceLink.GitHub" Version="1.1.1" />
+    </ItemGroup>
+
+</Project>
