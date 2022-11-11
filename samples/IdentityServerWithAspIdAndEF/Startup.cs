@@ -53,7 +53,11 @@ namespace IdentityServerWithAspIdAndEF
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders();
 
-            services.AddMvc();
+            services.AddMvc(options =>
+            {
+                options.Filters.Add(new AutoValidateAntiforgeryTokenAttribute());
+            });
+
             //services.AddMvc(options =>
             //    {
             //        options.Filters.Add(new AutoValidateAntiforgeryTokenAttribute());
@@ -151,9 +155,23 @@ namespace IdentityServerWithAspIdAndEF
 
             app.UseIdentityServer();
 
+            app.UseRouting();
+
             app.UseAuthentication();
 
-            app.UseMvcWithDefaultRoute();
+            //app.UseMvcWithDefaultRoute();
+
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllerRoute(
+                  name: "areas",
+                  pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}"
+                );
+                endpoints.MapControllerRoute(
+                  name: "default",
+                  pattern: "{controller=Home}/{action=Index}/{id?}"
+                );
+            });
         }
     }
 }

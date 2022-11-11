@@ -16,11 +16,11 @@ using MultiTenancyServer.Options;
 
 namespace IdentityServerWithAspIdAndEF.Data
 {
-    public class ApplicationDbContext : IdentityDbContext<ApplicationUser, IdentityRole, long>,
+    public class ApplicationDbContext : IdentityDbContext<ApplicationUser, IdentityRole, string>,
         IConfigurationDbContext, IPersistedGrantDbContext,
-        ITenantDbContext<ApplicationTenant, long>
+        ITenantDbContext<ApplicationTenant, string>
     {
-        private static TenancyModelState<long> _tenancyModelState;
+        private TenancyModelState<string> _tenancyModelState;
         private readonly ITenancyContext<ApplicationTenant> _tenancyContext;        
         private readonly ILogger _logger;
 

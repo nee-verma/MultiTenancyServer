@@ -1,4 +1,4 @@
-{
+﻿{
   "iisSettings": {
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
@@ -12,6 +12,7 @@
       "commandName": "Project",
       "launchBrowser": true,
       "launchUrl": "http://localhost:5000",
+      //"launchUrl": "https://tenant1.tenants.local:5001/Account/Login",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
